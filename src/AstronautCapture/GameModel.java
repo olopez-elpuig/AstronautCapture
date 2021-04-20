@@ -238,7 +238,7 @@ public class GameModel {
         // ve en su dirección hasta que llegues a una pared, luego ve en una dirección diferente
         // de lo contrario, vaya en una dirección aleatoria, y si golpea una pared, vaya en una dirección aleatoria diferente
         if (!ovniEatingMode) {
-            //check if ghost is in PacMan's column and move towards him
+            //comprovar si el ovni esta en la columna del astronauta y moverse hacia él
             if (location.getY() == astronautaLocation.getY()) {
                 if (location.getX() > astronautaLocation.getX()) {
                     velocity = changeVelocity(Direction.UP);
@@ -407,19 +407,19 @@ public class GameModel {
 
     /**
      * Actualiza el modelo para reflejar el movimiento del personaje y los OVNIS y el cambio en el estado de cualquier objeto comido
-     * durante el curso de estos movimientos. Cambia el estado del juego desde el modo de comer fantasmas.
+     * durante el curso de estos movimientos. Cambia el estado del juego desde el modo de comer ovnis.
      * @param direction la dirección ingresada más recientemente para que el personaje se mueva
      */
     public void step(Direction direction) {
         this.moveAstronauta(direction);
-        //si el personaje está en un punto pequeño, elimine el punto pequeño
+        //si el personaje está en un punto pequeño, elimine el huevo
         CellValue astronautaLocationCellValue = grid[(int) astronautaLocation.getX()][(int) astronautaLocation.getY()];
         if (astronautaLocationCellValue == CellValue.ALIENEGG) {
             grid[(int) astronautaLocation.getX()][(int) astronautaLocation.getY()] = CellValue.EMPTY;
             dotCount--;
             score += 10;
         }
-        //si el personaje está en un punto grande, elimine el punto grande y cambie el estado del juego al modo de comer OVNI e inicialice el contador
+        //si el personaje está en una pistola, elimina la pistola y cambie el estado del juego al modo de comer OVNI e inicialice el contador
         if (astronautaLocationCellValue == CellValue.PISTOLA) {
             grid[(int) astronautaLocation.getX()][(int) astronautaLocation.getY()] = CellValue.EMPTY;
             dotCount--;
@@ -514,7 +514,7 @@ public class GameModel {
     }
 
     /**
-     * Cuando se comen todos los puntos, el nivel está completo
+     * Cuando se comen todos los huevos, el nivel está completo
      * @return boolean
      */
     public boolean isLevelComplete() {
