@@ -73,7 +73,7 @@ public class Controller implements EventHandler<KeyEvent> {
         if (gameModel.isYouWon()) {
             this.gameOverLabel.setText(String.format("HAS GANADO!"));
         }
-        //cuando el personaje está en ovniEatingMode, cuente hacia atrás el ovniEatingModeCounter para restablecer ghostEatingMode a falso cuando el contador es 0
+        //cuando el personaje está en ovniEatingMode, cuente hacia atrás el ovniEatingModeCounter para restablecer ovniEatingMode a falso cuando el contador es 0
         if (gameModel.isOvniEatingMode()) {
             ovniEatingModeCounter--;
         }
