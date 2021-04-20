@@ -75,7 +75,7 @@ public class GameView extends Group {
                 else {
                     this.cellViews[row][column].setImage(null);
                 }
-                //verifique en qué dirección va PacMan y muestre la imagen correspondiente
+                //verifique en qué dirección va astronauta y muestre la imagen correspondiente
                 if (row == model.getAstronautaLocation().getX() && column == model.getAstronautaLocation().getY() && (GameModel.getLastDirection() == GameModel.Direction.RIGHT || GameModel.getLastDirection() == GameModel.Direction.NONE)) {
                     this.cellViews[row][column].setImage(this.astronautaImage);
                 }
